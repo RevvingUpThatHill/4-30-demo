@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Message } from "../model/Message";
+import { postMessageAPI } from "../service/MessageAPIService";
 
 export function NewMessageMenu() {
 
@@ -21,14 +22,7 @@ export function NewMessageMenu() {
             time_posted_epoch:0,
             posted_by:0
         }
-        fetch("https://641496c8e8fe5a3f3a0ad56a.mockapi.io/api/message",
-            {method:"POST",
-                headers:{
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify(message)
-            }
-        )
+        postMessageAPI(message);
     }
     return (
         <>
